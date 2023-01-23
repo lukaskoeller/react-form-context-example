@@ -1,0 +1,54 @@
+:root {
+  --gap: 12px;
+}
+
+html {
+  inline-size: 100%;
+  padding: clamp(16px, 4vw, calc(16px * 3));
+  box-sizing: border-box;
+}
+
+form {
+  inline-size: min(300px, 100%);
+}
+
+.formRows {
+  inline-size: 100%;
+  display: grid;
+  grid-column: 2;
+  gap: var(--gap);
+}
+
+input:is([type="radio"], [type="checkbox"]) {
+  inline-size: auto;
+  margin: 0;
+}
+
+label {
+  user-select: none;
+}
+
+.input-wrapper {
+  display: grid;
+  column-gap: var(--gap);
+
+  & > * {
+    min-inline-size: 0;
+  }
+
+  &:has(:is(
+    input[type="radio"],
+    input[type="checkbox"]
+  )) {
+    align-items: center;
+    justify-self: start;
+
+    & label {
+      grid-column: 2;
+    }
+  }
+}
+
+.hint {
+  max-inline-size: 60ch;
+}
